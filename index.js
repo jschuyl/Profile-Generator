@@ -28,17 +28,19 @@ const questions = [
     }
 ]
 if (answers.role === "Manager") {
-    managerQuestion = {
-        type: "input",
-        message: "what is your office number?",
-        name: "office"
-    }
-    const managerAnswers = await inquirer.prompt(managerQuestion)
+    managerQuestion = await inquirer
+        .prompt([
+            {
+                    type: "input",
+                    message: "what is your office number?",
+                    name: "office"
+                }
+        ])   
 
-    addManager = new Manager(
-        answers.id,
-        answers.name,
-        answers.email,
+    const addManager = new Manager(
+        userAnswers.id,
+        userAnswers.name,
+        userAnswers.email,
         managerAnswers.office
     );
     newStaffData.push(addManager)
@@ -48,7 +50,9 @@ if (answers.role === "Manager") {
 
 
 
-
+async function readyStart() {
+    await askTheQuestions()
+}
 
 async function askTheQuestions() {
     try {
@@ -58,4 +62,5 @@ async function askTheQuestions() {
             console.log(error)
         }
     }
-askTheQuestions();
+
+readyStart()
