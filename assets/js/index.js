@@ -10,20 +10,6 @@ const openingQuestion = [
     },
 
 ]
-.then((answer) => {
-    if (answer === "Manager") {
-        managerQuestions = [
-            {
-                type: "input",
-                message: "What is the Manager's name?",
-                name: "managerName"
-            }
-
-        ]
-    }
-
-})
-
 
 
 
