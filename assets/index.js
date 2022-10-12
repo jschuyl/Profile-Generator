@@ -10,12 +10,7 @@ const questions = [
     {
         type: "checkbox",
         message: "What this employee's role?",
-        name: "email"
-    },
-    {
-      type: "input",
-      message: "What is your Github username?", 
-      name: "github" 
+        name: ["Manager", "Engineer", "Intern"]
     },
 
 ]
