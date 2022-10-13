@@ -90,6 +90,25 @@ const questions = async () => {
 
 async function askTheQuestions() {
     await questions()
+
+    const theFellowshipGrows = await inquirer
+        .prompt([
+            {
+                type: "list",
+                message: "Is there another team member?",
+                choices: ["Yes, add another member to my team", "No, the team is complete"],
+                name: "youHaveMy"
+            }
+        ])
+        if (theFellowshipGrows.youHaveMy === "Yes, add another member to my team") {
+            return askTheQuestions();
+        }
+        return theFellowshipOfTheTeam
 }
 askTheQuestions();
 
+function theFellowshipOfTheTeam () {
+    fs.writeFileSync(
+        
+    )
+}
