@@ -5,7 +5,7 @@ const Intern = require("./assets/js/classes/intern");
 const Manager = require("./assets/js/classes/manager");
 
 const newStaffData = [];
-
+// gets the necessary info from the user(s)
 const questions = async () => {
     const answers = await inquirer
     .prompt([
@@ -87,7 +87,7 @@ const questions = async () => {
         console.log(newStaffData)
     }
 }
-
+// where the questions happen
 async function askTheQuestions() {
     await questions()
 
@@ -106,7 +106,7 @@ async function askTheQuestions() {
         return theFellowshipOfTheTeam
 }
 askTheQuestions();
-
+// builds the team page
 function theFellowshipOfTheTeam () {
     fs.writeFileSync(
         
