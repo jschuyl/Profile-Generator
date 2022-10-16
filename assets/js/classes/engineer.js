@@ -9,7 +9,7 @@ class Engineer extends Employee {
     getGithub() {
         return this.github
     }
-    // gets the role, has to be Engineer
+    // overrides the role, has to be Engineer
     getRole() {
         return "Engineer"
     }
