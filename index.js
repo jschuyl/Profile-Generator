@@ -1,5 +1,7 @@
+// npms being used
 const fs = require("fs")
 const inquirer = require("inquirer");
+// import classes below
 const Engineer = require("./assets/js/classes/engineer");
 const Intern = require("./assets/js/classes/intern");
 const Manager = require("./assets/js/classes/manager");
@@ -73,7 +75,7 @@ const questions = async () => {
             .prompt([
                 {
                     type: "input",
-                    message: "Please enter your school:",
+                    message: "Please enter your school name:",
                     name: "school"
                 }
             ])
@@ -86,6 +88,7 @@ const questions = async () => {
         newStaffData.push(addIntern)
         console.log(newStaffData)
     }
+    if (answers.role ==="Manager" && Manager)
 }
 // where the questions happen
 async function askTheQuestions() {
@@ -108,7 +111,8 @@ async function askTheQuestions() {
 askTheQuestions();
 // builds the team page
 function theFellowshipOfTheTeam () {
-    fs.writeFileSync(
-        
+    const buildPage = formatPage(employees);
+    fs.writeFileSync(output, buildpage, (err) =>
+    err ? console.error(err) : console.log("Page created")      
     )
 }
