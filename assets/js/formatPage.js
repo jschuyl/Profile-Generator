@@ -1,4 +1,4 @@
-const formatPage = (employees) => {
+const formatPage = (newStaffData) => {
     const top = `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -13,54 +13,54 @@ const formatPage = (employees) => {
     <main class="justify-contents-center">
         <div class="col p-4 text-center text-bg-info rounded-top">
                 <h1>My Team</h1>
-            </div>`
-    
-    let employeeArray = employees.map(employee => {
-        if (employee.getRole() === "Manager") {
+            </div>`    
+    let staffArray = newStaffData.map(staff => {
+        if (staff.getRole() === "Manager") {
             return `<div class="card-deck p-2 d-flex justify-content-between">
             <div class="card shadow" style="width: 15rem;">
                 <div class="card-header bg-info text-white">
-                    <h5>${employee.getName()}</h5>
+                    <h5>${staff.getName()}</h5>
                     <h6>Manager</h6>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">ID: ${employee.getID()}</p>
-                    <p><a href="mailto:${employee.getEmail()}" class="card-text">${employee.getEmail()}</a></p>
-                    <p class="card-text">Office #${employee.getOfficeNum()}</p>
+                    <p class="card-text">ID: ${staff.getId()}</p>
+                    <p><a href="mailto:${staff.getEmail()}" class="card-text">${staff.getEmail()}</a></p>
+                    <p class="card-text">Office #${staff.getOfficeNum()}</p>
                 </div>
             </div>`
-        }; if (employee.getRole() === "Engineer") {
+        }; if (staff.getRole() === "Engineer") {
             return `<div class="card shadow" style="width: 15rem;">
             <div class="card-header bg-info text-white">
-                <h5>${employee.getName()}</h5>
+                <h5>${staff.getName()}</h5>
                 <h6>Engineer</h6>
             </div>
             <div class="card-body">
-                <p class="card-text">ID: ${employee.getID()}</p>
-                <p><a href="mailto:${employee.getEmail()}" class="card-text">${employee.getEmail()}</a></p>
-                <p><a href="https://www.github.com/${employee.getGithub()} class="card-text">${employee.getGithub()}</a></p>
+                <p class="card-text">ID: ${staff.getId()}</p>
+                <p><a href="mailto:${staff.getEmail()}" class="card-text">${staff.getEmail()}</a></p>
+                <p><a href="https://www.github.com/${staff.getGithub()} class="card-text">${staff.getGithub()}</a></p>
             </div>
         </div>`
-        }; if (employee.getRole() === "Intern") {
+        }; if (staff.getRole() === "Intern") {
             return `<div class="card shadow" style="width: 15rem;">
             <div class="card-header bg-info text-white">
-                <h5>${employee.getName()}</h5>
+                <h5>${staff.getName()}</h5>
                 <h6>Intern</h6>
             </div>
             <div class="card-body">
-                <p class="card-text">ID:  ${employee.getID()}</p>
-                <p><a href="mailto:${employee.getEmail()}" class="card-text">${employee.getEmail()}</a></p>
+                <p class="card-text">ID:  ${staff.getId()}</p>
+                <p><a href="mailto:${staff.getEmail()}" class="card-text">${staff.getEmail()}</a></p>
                 <p class="card-text">School</p>
             </div>
         </div>`
-        });
+        }
+    });
         const bottom = `</div>
         </div>
     </main>
     </body>
     </html>`
 
-    return top + employeeArray.join("") + bottom
+    return top + staffArray.join("") + bottom
     }
 
     module.exports = formatPage

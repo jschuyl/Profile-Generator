@@ -5,6 +5,8 @@ const inquirer = require("inquirer");
 const Engineer = require("./assets/js/classes/engineer");
 const Intern = require("./assets/js/classes/intern");
 const Manager = require("./assets/js/classes/manager");
+// import formatPage
+const formatPage = require("./assets/js/formatPage");
 
 const newStaffData = [];
 // gets the necessary info from the user(s)
@@ -88,7 +90,6 @@ const questions = async () => {
         newStaffData.push(addIntern)
         console.log(newStaffData)
     }
-    if (answers.role ==="Manager" && Manager)
 }
 // where the questions happen
 async function askTheQuestions() {
@@ -105,14 +106,15 @@ async function askTheQuestions() {
         ])
         if (theFellowshipGrows.youHaveMy === "Yes, add another member to my team") {
             return askTheQuestions();
-        }
-        return theFellowshipOfTheTeam
+        } else {
+            return theFellowshipOfTheTeam();
+        }        
 }
 askTheQuestions();
 // builds the team page
 function theFellowshipOfTheTeam () {
-    const buildPage = formatPage(employees);
-    fs.writeFileSync(output, buildpage, (err) =>
+    const buildPage = formatPage(newStaffData);
+    fs.writeFileSync(output, buildPage, (err) =>
     err ? console.error(err) : console.log("Page created")      
     )
 }
