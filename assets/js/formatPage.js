@@ -13,11 +13,11 @@ const formatPage = (newStaffData) => {
     <main class="justify-contents-center">
         <div class="col p-4 text-center text-bg-info rounded-top">
                 <h1>My Team</h1>
-            </div>`    
+            </div>
+            <div class="card-deck p-2 d-flex justify-content-between">`    
     let staffArray = newStaffData.map(staff => {
         if (staff.getRole() === "Manager") {
-            return `<div class="card-deck p-2 d-flex justify-content-between">
-            <div class="card shadow" style="width: 15rem;">
+            return `<div class="card shadow" style="width: 15rem;">
                 <div class="card-header bg-info text-white">
                     <h5>${staff.getName()}</h5>
                     <h6>Manager</h6>
@@ -37,7 +37,7 @@ const formatPage = (newStaffData) => {
             <div class="card-body">
                 <p class="card-text">ID: ${staff.getId()}</p>
                 <p><a href="mailto:${staff.getEmail()}" class="card-text">${staff.getEmail()}</a></p>
-                <p><a href="https://www.github.com/${staff.getGithub()} class="card-text">${staff.getGithub()}</a></p>
+                <p><a href="https://www.github.com/${staff.getGithub()}" class="card-text">${staff.getGithub()}</a></p>
             </div>
         </div>`
         }; if (staff.getRole() === "Intern") {

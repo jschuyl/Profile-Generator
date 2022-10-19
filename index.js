@@ -1,12 +1,15 @@
 // npms being used
 const fs = require("fs")
 const inquirer = require("inquirer");
+const path = require("path");
 // import classes below
 const Engineer = require("./assets/js/classes/engineer");
 const Intern = require("./assets/js/classes/intern");
 const Manager = require("./assets/js/classes/manager");
 // import formatPage
 const formatPage = require("./assets/js/formatPage");
+// need a path output
+const output = path.join("html", "index.html");
 
 const newStaffData = [];
 // gets the necessary info from the user(s)
