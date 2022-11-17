@@ -11,11 +11,53 @@ const formatPage = require("./assets/js/formatPage");
 // need a path output
 const output = path.join("html", "index.html");
 
+// stores answers and allows me to display info
 const newStaffData = [];
 // gets the necessary info from the user(s)
+// only one manager please
+const firstQuestion = async () =>{
+    const answers = await inquirer
+    .prompt([
+        {
+            type: "input",
+            message: "Please enter the team Manager's name:",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Please enter your ID number:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Please enter your email:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Please enter your office number:",
+            name: "office"
+        }
+    ])
+    const addManager = new Manager(
+        answers.id,
+        answers.name,
+        answers.email,
+        answers.office
+    );
+    newStaffData.push(addManager)
+    console.log(newStaffData)
+    return askTheQuestions();
+}
 const questions = async () => {
     const answers = await inquirer
     .prompt([
+            {
+                type: "list",
+                message: "Choose your role from the following:",
+                choices: ["Engineer", "Intern"],
+                name: "role"
+            },
             {
                 type: "input",
                 message: "Please enter your name:",
@@ -30,12 +72,6 @@ const questions = async () => {
                 type: "input",
                 message: "Please enter your email:",
                 name: "email"
-            },
-            {
-                type: "list",
-                message: "Choose your role from the following:",
-                choices: ["Manager", "Engineer", "Intern"],
-                name: "role"
             }
     ])
     if (answers.role === "Manager") {
@@ -113,7 +149,7 @@ async function askTheQuestions() {
             return theFellowshipOfTheTeam();
         }        
 }
-askTheQuestions();
+firstQuestion();
 // builds the team page
 function theFellowshipOfTheTeam () {
     const buildPage = formatPage(newStaffData);
